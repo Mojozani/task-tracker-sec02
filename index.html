@@ -22,6 +22,13 @@
 
     Github -> cloud platform of version control software, collaborate with others
     added stuff to github
+
+    . Clone downloads a repository to your computer
+    . Push uploads local commits
+    . pull gets other collaborators updates and brings it into your local repo
+    . Pull request proposes merging changes between branches or repositories
+    . Merge combines content from different branches
+    . Fork copies a repository on GitHub
 -->
 
 <!DOCTYPE html>
@@ -31,6 +38,49 @@
     </head>
 
     <body>
+        <form id="task-form">
+            <fieldset>
+            <legend>My Task Tracker</legend>
+            <label>Task: </label>
+            <input type="text" id="task-desc">
+            <input type="submit" value="+">
+            <input type="reset" value="-">
+            </fieldset>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Task #</th>
+                    <th>Task Desc.</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+
+            </tbody>
+        </table>
+
+        <script>
+            const taskForm  = document.getElementById("task-form");
+            const taskDesc  = document.getElementById("task-desc");
+            const tableBody = document.getElementById("table-body");
+
+            let counter = 0;
+            function submitHandler(event) {
+                event.preventDefault();
+                counter++;
+                const tr = document.createElement("tr");
+                const td1 = document.createElement("td");
+                const td2 = document.createElement("td");
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tableBody.appendChild(tr);
+                td1.innerText = counter;
+                td2.innerText = taskDesc.value;
+            }
+
+            taskForm.addEventListener("submit", submitHandler);
+        </script>
 
     </body>
 
